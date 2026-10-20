@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>VEXORA | Boutique officielle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar" id="accueil">
+    <a class="brand" href="#accueil">VEXORA<span>.</span></a>
+    <span class="brand-subtitle">LE STYLE, SANS LIMITES</span>
+    <button class="icon-button" id="notification-btn" type="button"
+      aria-label="Notifications">♧</button>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <p class="eyebrow">BIENVENUE CHEZ VEXORA</p>
+      <h1>Trouvez votre <span>style.</span></h1>
+      <p>Des pièces choisies pour vous.</p>
+    </section>
+
+    <form class="search-bar" id="search-form" role="search">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="search-input" type="search"
+        placeholder="Rechercher un produit..."
+        aria-label="Rechercher un produit">
+      <button id="clear-search" type="button" hidden
+        aria-label="Effacer la recherche">×</button>
+    </form>
+
+    <section class="category-section">
+      <div class="category-heading">
+        <h2>Catégories</h2>
+        <span>Défiler →</span>
+      </div>
+      <div class="category-list" id="category-list">
+        <button type="button" class="category-chip active" data-category="Tout">Tout</button>
+        <button type="button" class="category-chip" data-category="Tissus">Tissus</button>
+        <button type="button" class="category-chip" data-category="Homme">Homme</button>
+        <button type="button" class="category-chip" data-category="Femme">Femme</button>
+        <button type="button" class="category-chip" data-category="Bijoux">Bijoux</button>
+        <button type="button" class="category-chip" data-category="Accessoires">Accessoires</button>
+      </div>
+    </section>
+
+    <section class="featured-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">L'UNIVERS VEXORA</p>
+          <h2>À la une</h2>
+        </div>
+        <a href="#produits">Explorer ↗</a>
+      </div>
+
+      <article class="featured-card">
+        <img
+          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900"
+          alt="Vêtement de la sélection VEXORA">
+        <div class="featured-overlay">
+          <span>LA SÉLECTION DU MOMENT</span>
+          <h3>Le style commence ici.</h3>
+          <a href="#produits">Découvrir →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="products-section" id="produits">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SÉLECTIONNÉS POUR VOUS</p>
+          <h2>Nos produits</h2>
+        </div>
+        <span id="product-count">0 article</span>
+      </div>
+
+      <div class="products-grid" id="product-list"></div>
+
+      <p id="empty-message" class="empty-message" hidden>
+        Aucun produit trouvé.
+      </p>
+    </section>
+
+    <section class="newsletter">
+      <p class="eyebrow">L'EXPÉRIENCE VEXORA</p>
+      <h2>Votre style, vos choix.</h2>
+      <p>Explorez nos tissus, vêtements, bijoux et accessoires.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navigation principale">
+    <a class="nav-item selected" href="#accueil">
+      <span>⌂</span><small>Accueil</small>
+    </a>
+    <a class="nav-item" href="#produits">
+      <span>◇</span><small>Découvrir</small>
+    </a>
+    <button class="nav-item" id="favorites-nav" type="button">
+      <span>♡</span><small>Favoris</small>
+    </button>
+    <button class="nav-item cart-nav" id="cart-nav" type="button">
+      <span>▢<b id="cart-count">0</b></span><small>Panier</small>
+    </button>
+  </nav>
+
+  <dialog id="product-dialog" class="product-dialog">
+    <button type="button" class="dialog-close" id="dialog-close"
+      aria-label="Fermer">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <dialog id="cart-dialog" class="cart-dialog">
+    <button type="button" class="dialog-close" id="cart-close"
+      aria-label="Fermer">×</button>
+
+    <h2>Votre panier</h2>
+
+    <div id="cart-items"></div>
+
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cart-total">0 FCFA</strong>
+    </div>
+
+    <form id="order-form">
+      <h3>Vos informations de commande</h3>
+
+      <label for="customer-name">Nom complet</label>
+      <input
+        type="text"
+        id="customer-name"
+        name="customer-name"
+        placeholder="Votre nom complet"
+        autocomplete="name"
+        required
+      >
+
+      <label for="customer-phone">Numéro de téléphone</label>
+      <input
+        type="tel"
+        id="customer-phone"
+        name="customer-phone"
+        placeholder="Ex. : 77 123 45 67"
+        autocomplete="tel"
+        required
+      >
+
+      <label for="customer-address">Adresse de livraison</label>
+      <textarea
+        id="customer-address"
+        name="customer-address"
+        placeholder="Ville, quartier, indications..."
+        autocomplete="street-address"
+        rows="3"
+        required
+      ></textarea>
+
+      <label for="order-notes">Précisions (facultatif)</label>
+      <textarea
+        id="order-notes"
+        name="order-notes"
+        placeholder="Autres informations sur la commande"
+        rows="2"
+      ></textarea>
+
+      <button type="submit" class="gold-button" id="checkout-btn">
+        Préparer ma commande
+      </button>
+
+      <p class="cart-note">
+        Vérifiez vos articles avant de confirmer votre commande.
+        La confirmation se fera sur WhatsApp.
+      </p>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+  </html>
+  
